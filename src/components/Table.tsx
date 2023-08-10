@@ -1,36 +1,48 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
+import Cell from './Cell';
+import { Content } from '../types/Content';
+import { useApiData } from '../hooks/useApiData';
+import { table } from 'console';
 
-type Props = {
-  ipAdress: string;
-  location: string;
-  timezone: string;
-  isp: string
-}
+const Table: FC = () => {
+  const { data } = useApiData();
 
-export const Table: FC<Props> = ({
-  ipAdress,
-  location,
-  timezone,
-  isp,
-}) => {
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  const { ip, location, isp } = data;
+
+  if (!location) {
+    return <div>No location data available.</div>;
+  }
+
+  const { region, postalCode, timezone } = location;
+
+  const contentObject = useMemo(() => {
+    return {
+      [Content.ip]: ip,
+      [Content.location]: `${region}, ${postalCode}`,
+      [Content.timezone]: timezone,
+      [Content.isp]: isp,
+    };
+  }, [data]);
+
+  console.log('Table.tsx');
+
   return (
-    <table className="search-bar__table">
-      <tr className="cell">
-        <th className="cell__title">IP ADRESS</th>
-        <td className="cell__content">{ipAdress}</td>
-      </tr>
-      <tr className="cell">
-        <th className="cell__title">LOCATION</th>
-        <td className="cell__content">{location}</td>
-      </tr>
-      <tr className="cell">
-        <th className="cell__title">TIMEZONE</th>
-        <td className="cell__content">{timezone}</td>
-      </tr>
-      <tr className="cell">
-        <th className="cell__title">ISP</th>
-        <th className="cell__content">{isp}</th>
-      </tr>
+    <table className="table-wraper">
+      <tbody className="search-bar__table">
+        {Object.entries(contentObject).map(([key, value]) => (
+          <Cell
+            key={key}
+            title={key}
+            content={value}
+          />
+        ))}
+      </tbody>
     </table>
   );
 };
+
+export default Table;

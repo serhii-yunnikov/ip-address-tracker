@@ -1,5 +1,7 @@
 export interface Location {
-  coundivy: string,
   region: string,
+  postalCode: string,
   timezone: string,
+  lat: string,
+  lng: string,
 }

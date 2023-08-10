@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Input from './Input';
-import { Table } from './Table';
+import Table from './Table';
 
 const SearchBar: FC = () => {
   return (

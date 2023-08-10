@@ -1,13 +1,15 @@
 import { useRef } from 'react';
+import { useApiData } from '../hooks/useApiData';
 
 const Input = () => {
   const queryRef = useRef<HTMLInputElement>(null);
+  const { updateData, data } = useApiData();
 
-  // const handleSubmitButton = () => {
-  //   if (queryRef.current) {
-      
-  //   }
-  // };
+  const handleSubmitButton = () => {
+    if (queryRef.current) {
+      updateData(queryRef.current.value);
+    }
+  };
 
   return (
     <form
@@ -25,7 +27,7 @@ const Input = () => {
         className="form__button"
         aria-label="Focus-search-query"
         type="submit"
-        // onClick={}
+        onClick={() => handleSubmitButton()}
       >
         <div className="search-bar__arrow"/>
       </button>

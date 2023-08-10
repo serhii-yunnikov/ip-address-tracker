@@ -1,31 +1,23 @@
 import './styles/main.scss';
-import Map from './components/Map';
+import MapArea from './components/MapArea';
 import SearchBar from './components/SearchBar';
-import { LatLngExpression } from 'leaflet';
-import getIpData from './utils/getApiData';
-import { useQuery } from 'react-query';
-// import { useContext, useEffect } from 'react';
-// import { QueryContext } from './context/QueryContext';
+import { LatLngTuple } from 'leaflet';
+import { useApiData } from './hooks/useApiData';
 
 function App() {
-  const position: LatLngExpression = [51.505, -0.09];
-  const {
-    data,
-    isSuccess,
-    isLoading,
-  } = useQuery({
-    queryFn: () => getIpData(),
-    queryKey: 'location',
-  });
+  const { data, error, isLoading } = useApiData();
 
-  console.log(data);
+  if (isLoading) return "Loading...";
+  if (error || !data) return `An error has occurred: ${error}`;
+
+  const position: LatLngTuple = [+data?.location.lat, +data?.location.lng];
 
   return (
     <>
       <SearchBar />
-      <Map position={position}/>
+      <MapArea position={position}/>
     </>
   );
-}
+};
 
 export default App

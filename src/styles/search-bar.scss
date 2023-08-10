@@ -8,10 +8,13 @@
   width: 100%;
   background-image: url('../images/pattern-bg-desktop.png');
   background-repeat: no-repeat;
+  background-size: cover;
 
   &__title {
     margin: 30px 0 0;
     font-size: 30px;
+    font-weight: 700;
+    color: #fff;
   }
 
   &__arrow {
@@ -21,25 +24,31 @@
   }
 
   &__table {
-    z-index: 1;
-    position: absolute;
-    bottom: 0;
-    transform: translateY(50%);
+    display: grid;
+    grid-template-columns: repeat(4, 255px);
+    grid-template-rows: 1fr;
     display: flex;
     background-color: #fff;
     border-radius: 10px;
   }
 }
 
+.table-wraper {
+  display: flex;
+  bottom: 0;
+  transform: translateY(50%);
+  bottom: 0;
+  transform: translateY(50%);
+}
+
 .form {
   display: flex;
-  height: 55px;
   width: 560px;
   margin-top: 30px;
   border: none;
 
   &__input {
-    height: 100%;
+    height: 55px;
     width: 100%;
     border-radius: 10px 0 0 10px;
     border: none;
@@ -47,6 +56,10 @@
     padding: 0 0 0 20px;
     font-size: 16px;
     color: #000;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__button {
@@ -72,16 +85,18 @@
   flex-direction: column;
   box-sizing: border-box;
   width: 255px;
-  height: 135px;
+  min-height: 135px;
   padding: 30px;
+  color: #2b2b2b;
   font-weight: 700;
+  text-align: start;
 
   &:not(:last-child):after {
     content: "";
     position: absolute;
     right: 0;
-    top: 0;
-    transform: translateY(50%);
+    top: 50%;
+    transform: translateY(-50%);
     height: 70px;
     width: 0;
     border: 1px solid #969696;
@@ -90,10 +105,10 @@
   &__title {
     color: #969696;
     font-size: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   &__content {
-    font-size: 30px;
+    font-size: 20px;
   }
 }
