@@ -28,8 +28,6 @@ const Table: FC = () => {
     };
   }, [data]);
 
-  console.log('Table.tsx');
-
   return (
     <table className="table-wraper">
       <tbody className="search-bar__table">
