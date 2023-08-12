@@ -2,7 +2,6 @@ import { FC, useMemo } from 'react';
 import Cell from './Cell';
 import { Content } from '../types/Content';
 import { useApiData } from '../hooks/useApiData';
-import { table } from 'console';
 
 const Table: FC = () => {
   const { data } = useApiData();
@@ -22,7 +21,8 @@ const Table: FC = () => {
   const contentObject = useMemo(() => {
     return {
       [Content.ip]: ip,
-      [Content.location]: `${region}, ${postalCode}`,
+      [Content.location]:
+        postalCode ? `${region}, ${postalCode}` : region,
       [Content.timezone]: timezone,
       [Content.isp]: isp,
     };

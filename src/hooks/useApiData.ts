@@ -1,6 +1,10 @@
 import getApiData from '../utils/getApiData';
 import { ApiData } from '../types/ApiData';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
 
 export function useApiData() {
   const queryClient = useQueryClient();

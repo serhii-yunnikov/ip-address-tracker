@@ -4,6 +4,7 @@ import {
   Marker,
   Popup,
   TileLayer,
+  ZoomControl,
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { iconLocation } from '../utils/icon-location';
@@ -15,6 +16,7 @@ const MapArea: FC<MapProps> = ({ position }) => (
     center={position}
     zoom={13}
     scrollWheelZoom={false}
+    zoomControl={false}
   >
     <DynamicLocation position={position} zoom={13}/>
     <TileLayer
@@ -29,6 +31,7 @@ const MapArea: FC<MapProps> = ({ position }) => (
         A pretty CSS3 popup. <br /> Easily customizable.
       </Popup>
     </Marker>
+    <ZoomControl position='bottomright'/>
   </MapContainer>
 );
 
