@@ -17,7 +17,7 @@
     color: #fff;
 
     @include onPhone {
-      margin-top: 15px;
+      margin-top: 20px;
       font-size: 16px;
       font-weight: 500px;
     }
@@ -85,9 +85,9 @@
     color: #000;
 
     @include onPhone {
-      height: 30px;
-      font-size: 10px;
-      padding-left: 8px;
+      height: 45px;
+      font-size: 12px;
+      padding-left: 10px;
     }
 
     &:focus {
@@ -110,7 +110,7 @@
     border-radius: 0 10px 10px 0;
     
     @include onPhone {
-      width: 30px;
+      width: 47px;
     }
     
     &:focus {
@@ -151,6 +151,8 @@
   @include onPhone {
     padding: 10px;
     min-height: 0;
+    align-items: center;
+    text-align: center;
   }
 
   &:not(:last-child):after {
